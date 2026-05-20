@@ -1,7 +1,6 @@
-
 # 🚫 Spam SMS/Email Detector
 
-A Machine Learning based system that detects whether 
+A Machine Learning based system that detects whether
 a message is Spam or Legitimate (Ham) using NLP techniques.
 
 ---
@@ -36,80 +35,78 @@ Spam or Ham instantly.
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Language | Python 3.10 |
-| ML Algorithm | Naive Bayes |
-| Text Processing | TF-IDF Vectorizer |
-| NLP Library | NLTK |
-| UI | Streamlit |
-| Backend | Flask |
-| Visualization | Matplotlib, Seaborn |
-| Dataset | UCI SMS Spam Collection |
-| Deployment | Streamlit Cloud |
-| Version Control | GitHub |
+| Layer           | Technology              |
+| --------------- | ----------------------- |
+| Language        | Python 3.10             |
+| ML Algorithm    | Naive Bayes             |
+| Text Processing | TF-IDF Vectorizer       |
+| NLP Library     | NLTK                    |
+| UI              | Streamlit               |
+| Backend         | Flask                   |
+| Visualization   | Matplotlib, Seaborn     |
+| Dataset         | UCI SMS Spam Collection |
+| Deployment      | Streamlit Cloud         |
+| Version Control | GitHub                  |
 
 ---
 
 ## 📁 Folder Structure
 
-```
 spam-detector/
 ├── data/
-│   └── spam.csv
+│ └── spam.csv
 ├── model/
-│   └── spam_model.pkl
-│   └── tfidf_vectorizer.pkl
+│ └── spam_model.pkl
+│ └── tfidf_vectorizer.pkl
 ├── src/
-│   ├── clean.py
-│   ├── train.py
-│   └── predict.py
+│ ├── clean.py
+│ ├── train.py
+│ └── predict.py
 ├── app/
-│   └── app.py
+│ └── app.py
 ├── notebooks/
-│   └── EDA.ipynb
+│ └── EDA.ipynb
 ├── screenshots/
-│   └── demo.png
-│   └── confusion_matrix.png
+│ └── demo.png
+│ └── confusion_matrix.png
 ├── requirements.txt
 └── README.md
-```
 
 ---
 
 ## ⚙️ How It Works
 
-```
 User inputs message
-        ↓
+↓
 Text cleaned (lowercase, remove symbols, stopwords)
-        ↓
+↓
 TF-IDF converts text to numerical features
-        ↓
+↓
 Naive Bayes model predicts spam or ham
-        ↓
+↓
 Result shown with confidence percentage
-```
 
 ---
 
 ## 📊 Model Performance
 
-| Metric | Score |
-|--------|-------|
-| Accuracy | 97.8% |
-| F1 Score | 96.4% |
+| Metric    | Score |
+| --------- | ----- |
+| Accuracy  | 97.8% |
+| F1 Score  | 96.4% |
 | Precision | 97.1% |
-| Recall | 95.8% |
+| Recall    | 95.8% |
 
 ---
 
 ## 📸 Screenshots
 
 ### Home Screen
+
 ![Home Screen](screenshots/demo.png)
 
 ### Confusion Matrix
+
 ![Confusion Matrix](screenshots/confusion_matrix.png)
 
 ---
@@ -117,30 +114,29 @@ Result shown with confidence percentage
 ## 🚀 How to Run Locally
 
 ### Step 1 — Clone the repo
-```bash
+
+bash
 git clone https://github.com/Piyush2625S/spam-detector.git
 cd spam-detector
-```
 
 ### Step 2 — Install dependencies
-```bash
+
+bash
 pip install -r requirements.txt
-```
 
 ### Step 3 — Train the model
-```bash
+
+bash
 python src/train.py
-```
 
 ### Step 4 — Run the app
-```bash
+
+bash
 streamlit run app/app.py
-```
 
 ### Step 5 — Open in browser
-```
+
 http://localhost:8501
-```
 
 ---
 
@@ -162,12 +158,12 @@ http://localhost:8501
 
 ## 👥 Team
 
-| Member | Role |
-|--------|------|
-| Member 1 | Data Cleaning and EDA |
-| Member 2 | Model Training and Evaluation |
-| Member 3 | Flask Backend API |
-| Member 4 | Streamlit UI and Deployment |
+| Member   | Role                           |
+| -------- | ------------------------------ |
+| Member 1 | Data Cleaning and EDA          |
+| Member 2 | Model Training and Evaluation  |
+| Member 3 | Flask Backend API              |
+| Member 4 | Streamlit UI and Deployment    |
 | Member 5 | Documentation and Presentation |
 
 ---
@@ -184,15 +180,3 @@ http://localhost:8501
 ## 📄 License
 
 This project is open source and available under the MIT License.
-```
-
----
-
-## 3 Things to Update Before Pushing
-
-| Replace This | With This |
-|-------------|-----------|
-| `YOURNAME` | Your GitHub username |
-| `your-app-link` | Your Streamlit Cloud link after deployment |
-| `Member 1, 2, 3...` | Your actual team member names |
-
