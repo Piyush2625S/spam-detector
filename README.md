@@ -118,7 +118,7 @@ Result shown with confidence percentage
 
 ### Step 1 — Clone the repo
 ```bash
-git clone https://github.com/YOURNAME/spam-detector.git
+git clone https://github.com/Piyush2625S/spam-detector.git
 cd spam-detector
 ```
 
@@ -146,7 +146,7 @@ http://localhost:8501
 
 ## 🌐 Live Demo
 
-👉 [Click here to try the live app](https://your-app-link.streamlit.app)
+👉 [Click here to try the live app](https://spam-detector.streamlit.app)
 
 ---
 
