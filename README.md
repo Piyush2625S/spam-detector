@@ -1,7 +1,6 @@
-# 🚫 Spam SMS/Email Detector
+🛡️ Spam SMS / Email Detector
 
-A Machine Learning based system that detects whether
-a message is Spam or Legitimate (Ham) using NLP techniques.
+A machine learning web application that classifies SMS and email messages as spam or legitimate (ham) in real time using Natural Language Processing and supervised learning.
 
 ---
 
@@ -33,150 +32,244 @@ Spam or Ham instantly.
 
 ---
 
-## 🛠️ Tech Stack
+## 🔴 Live Demo
 
-| Layer           | Technology              |
-| --------------- | ----------------------- |
-| Language        | Python 3.10             |
-| ML Algorithm    | Naive Bayes             |
-| Text Processing | TF-IDF Vectorizer       |
-| NLP Library     | NLTK                    |
-| UI              | Streamlit               |
-| Backend         | Flask                   |
-| Visualization   | Matplotlib, Seaborn     |
-| Dataset         | UCI SMS Spam Collection |
-| Deployment      | Streamlit Cloud         |
-| Version Control | GitHub                  |
+> Start Flask API → Run Streamlit → Open `http://localhost:8501`
+
+bash
+# Terminal 1
+python app/flask_api.py
+
+# Terminal 2
+streamlit run app/app.py
+
+
+---
+
+## 📌 Project Overview
+
+| Property     | Details                          |
+|--------------|----------------------------------|
+| Domain       | NLP + Machine Learning           |
+| Dataset      | UCI SMS Spam Collection (Kaggle) |
+| Records      | 5,169 messages after cleaning    |
+| Train/Test   | 80% / 20% split                  |
+| Best Model   | Logistic Regression / Naive Bayes|
+| Accuracy     | ~98%                             |
+| Stack        | Python, Flask, Streamlit         |
+
+---
+
+## 🧠 How It Works
+
+
+Raw Message
+    ↓
+Text Cleaning (lowercase, remove URLs, phones, punctuation)
+    ↓
+Stopword Removal (NLTK)
+    ↓
+Stemming (PorterStemmer)
+    ↓
+TF-IDF Vectorization (top 5000 features, 1-2 ngrams)
+    ↓
+ML Model (Naive Bayes / Logistic Regression)
+    ↓
+Prediction: SPAM or HAM + Confidence Score
+
 
 ---
 
 ## 📁 Folder Structure
 
+
 spam-detector/
 ├── data/
-│ └── spam.csv
+│   ├── spam.csv                  ← raw dataset (UCI)
+│   └── cleaned_spam.csv          ← after preprocessing
 ├── model/
-│ └── spam_model.pkl
-│ └── tfidf_vectorizer.pkl
+│   ├── best_model.pkl            ← saved best model
+│   ├── tfidf_vectorizer.pkl      ← saved vectorizer
+│   ├── naive_bayes_model.pkl
+│   └── logistic_regression_model.pkl
 ├── src/
-│ ├── clean.py
-│ ├── train.py
-│ └── predict.py
+│   ├── clean.py                  ← data preprocessing
+│   ├── train.py                  ← model training + evaluation
+│   └── predict.py                ← prediction logic
 ├── app/
-│ └── app.py
+│   ├── flask_api.py              ← REST API backend
+│   └── app.py                    ← Streamlit frontend
 ├── notebooks/
-│ └── EDA.ipynb
+│   └── EDA.ipynb                 ← exploratory data analysis
 ├── screenshots/
-│ └── demo.png
-│ └── confusion_matrix.png
+│   ├── model_comparison.png
+│   ├── confusion_naive_bayes.png
+│   └── confusion_logistic_regression.png
 ├── requirements.txt
 └── README.md
 
----
-
-## ⚙️ How It Works
-
-User inputs message
-↓
-Text cleaned (lowercase, remove symbols, stopwords)
-↓
-TF-IDF converts text to numerical features
-↓
-Naive Bayes model predicts spam or ham
-↓
-Result shown with confidence percentage
 
 ---
 
-## 📊 Model Performance
+## 👥 Team Roles
 
-| Metric    | Score |
-| --------- | ----- |
-| Accuracy  | 97.8% |
-| F1 Score  | 96.4% |
-| Precision | 97.1% |
-| Recall    | 95.8% |
-
----
-
-## 📸 Screenshots
-
-### Home Screen
-
-![Home Screen](screenshots/demo.png)
-
-### Confusion Matrix
-
-![Confusion Matrix](screenshots/confusion_matrix.png)
+| Member   | Responsibility                                      |
+|----------|-----------------------------------------------------|
+| Member 1 | Data cleaning — `src/clean.py`                      |
+| Member 2 | Model training + evaluation — `src/train.py`, `src/predict.py` |
+| Member 3 | Flask REST API — `app/flask_api.py`                 |
+| Member 4 | Streamlit UI — `app/app.py`                         |
+| Member 5 | Documentation, README, report, presentation slides  |
 
 ---
 
-## 🚀 How to Run Locally
+## ⚙️ Tech Stack
 
-### Step 1 — Clone the repo
+| Layer        | Technology                          |
+|--------------|-------------------------------------|
+| Language     | Python 3.10                         |
+| ML           | scikit-learn (Naive Bayes, LR)      |
+| NLP          | NLTK (stopwords, PorterStemmer)     |
+| Vectorizer   | TF-IDF (TfidfVectorizer)            |
+| Backend API  | Flask + flask-cors                  |
+| Frontend UI  | Streamlit                           |
+| Data         | pandas, numpy                       |
+| Visualization| matplotlib, seaborn                 |
+| Model Saving | pickle                              |
+| Dataset      | UCI SMS Spam Collection             |
+
+---
+
+## 🚀 Setup & Installation
+
+### 1. Clone the repository
 
 bash
-git clone https://github.com/Piyush2625S/spam-detector.git
+git clone https://github.com/YOUR_USERNAME/spam-detector.git
 cd spam-detector
 
-### Step 2 — Install dependencies
+
+### 2. Create virtual environment
+
+bash
+py -3.10 -m venv venv
+venv\Scripts\activate        # Windows CMD
+
+
+### 3. Install dependencies
 
 bash
 pip install -r requirements.txt
 
-### Step 3 — Train the model
+
+### 4. Download dataset
+
+Download `spam.csv` from [Kaggle UCI SMS Spam Collection](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
+and place it in the `data/` folder.
+
+### 5. Run the pipeline
 
 bash
+# Step 1 — Clean data
+python src/clean.py
+
+# Step 2 — Train model
 python src/train.py
 
-### Step 4 — Run the app
+# Step 3 — Test prediction
+python src/predict.py
+
+
+### 6. Start the application
 
 bash
+# Terminal 1 — Flask API
+python app/flask_api.py
+
+# Terminal 2 — Streamlit UI
 streamlit run app/app.py
 
-### Step 5 — Open in browser
 
-http://localhost:8501
-
----
-
-## 🌐 Live Demo
-
-👉 [Click here to try the live app](https://spam-detector.streamlit.app)
+Open browser at: `http://localhost:8501`
 
 ---
 
-## 📂 Dataset
+## 📊 Model Results
 
-- Name: UCI SMS Spam Collection Dataset
-- Source: Kaggle
-- Size: 5,574 messages
-- Labels: Ham (4,827) and Spam (747)
-- Link: https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset
+| Metric    | Naive Bayes | Logistic Regression |
+|-----------|-------------|----------------------|
+| Accuracy  | 97.87%      | 98.26%               |
+| Precision | 98.23%      | 97.77%               |
+| Recall    | 89.47%      | 91.58%               |
+| F1 Score  | 93.65%      | 94.58%               |
 
----
-
-## 👥 Team
-
-| Member   | Role                           |
-| -------- | ------------------------------ |
-| Member 1 | Data Cleaning and EDA          |
-| Member 2 | Model Training and Evaluation  |
-| Member 3 | Flask Backend API              |
-| Member 4 | Streamlit UI and Deployment    |
-| Member 5 | Documentation and Presentation |
+> Logistic Regression selected as best model based on F1 Score.
 
 ---
 
-## 🔮 Future Improvements
+## 🔌 API Reference
 
-- Add Hindi and Hinglish spam detection
-- Implement BERT for better contextual understanding
-- Build browser extension for real time detection
-- Add email header analysis for deeper spam detection
+### `GET /health`
+Returns API and model status.
+
+**Response:**
+json
+{
+  "status": "healthy",
+  "model_loaded": true,
+  "model_type": "LogisticRegression"
+}
+
+
+### `POST /predict`
+Classifies a single message.
+
+**Request:**
+json
+{
+  "message": "FREE prize! Call now to claim your reward!"
+}
+
+
+**Response:**
+json
+{
+  "label": "spam",
+  "confidence": 99.67,
+  "cleaned": "free prize call claim reward",
+  "status": "success"
+}
+
+
+### `POST /batch`
+Classifies multiple messages at once.
+
+**Request:**
+json
+{
+  "messages": ["Free prize now!", "Hey see you tomorrow"]
+}
+
+
+---
+
+## 📦 requirements.txt
+
+
+pandas==2.0.3
+numpy==1.24.3
+scikit-learn==1.3.0
+nltk==3.8.1
+streamlit==1.28.0
+flask==3.0.0
+flask-cors==4.0.0
+matplotlib==3.7.2
+seaborn==0.12.2
+
 
 ---
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
+This project is built for academic purposes.
+Dataset credit: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/228/sms+spam+collection)
